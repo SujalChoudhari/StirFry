@@ -74,8 +74,6 @@ function ChatRoom() {
   const q = query(msgRef, orderBy('createdAt','desc'), limit(15));
 
   const [messages, loading] = useCollectionData(q, { initialValue: [] });
-  var audio  = new Audio("./dropped.wav");
-      // audio.play();
 
   const [formValue, setFormValue] = useState('');
 
@@ -116,7 +114,7 @@ function ChatRoom() {
 
       <div className='new-msg'>
         <form onSubmit={sendMessage}>
-          <input value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
+          <input placeholder='My passwords are ...' value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
           <button type="submit">🍳</button>
         </form>
       </div>

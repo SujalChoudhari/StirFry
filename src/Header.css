@@ -1,16 +1,17 @@
 .header {
-    background-color: #306070;
+    background-color: #7cdcfc11;
     color: #fff;
     padding: 0 10vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2vw;
+    margin: 2vh 5vw;
     border-radius: 20px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    animation: intro 0.5s ease 1;
 }
 
 .header p {
@@ -21,5 +22,51 @@
 .header h1 {
     filter: drop-shadow(0 0 0.75rem #ddd);
     user-select: none;
-    font-size: min(5vw, 30px);
+    font-size: min(5vw, 30px);   
+    animation: intro 0.5s ease 1; 
+}
+
+.header h1:hover {
+    animation: hover 0.5s ease infinite;
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        padding: 0 5vw;
+        margin: 2vh 2vw;
+    }
+
+    .header p {
+        font-size: 0.7vh;
+    }
+
+    .header h1 {
+        font-size: 2vh;
+    }
+}
+
+@keyframes intro {
+    0% {
+        transform: translate(0, -100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes hover {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, -5px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }

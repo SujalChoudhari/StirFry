@@ -1,15 +1,11 @@
 body {
-    background-color: #0c2c15;
+    background-image: linear-gradient(45deg, #003534, #020b20);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-.g-logo {
-    height: 3vh;
-    transform: translate(0, 1vh);
-    margin-right: 3px;
-    background-color: rgb(255, 255, 255);
-    padding: 1vh;
-    border-radius: 50%;
-}
+
 
 .new-msg {
     width: 100vw;
@@ -20,8 +16,9 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-
+    filter: drop-shadow(0 0 40px rgb(1, 55, 18));
     margin-bottom: 3vh;
+    animation: intro-down 0.5s ease 1;
 }
 
 .new-msg input {
@@ -36,6 +33,11 @@ body {
     font-size: 2vh;
     outline: none;
     background-color: #c4f8ff;
+    font-family: monospace;
+}
+
+.new-msg input::placeholder {
+    color: #52a0ba;
 }
 
 .new-msg button {
@@ -53,13 +55,26 @@ body {
     transition: 0.2s ease;
 }
 
-.fineprint{
-    font-size: 8px;
-    color: #aaa;
-    margin-top: 1rem;
-    position: fixed;
-    text-align: justify;
-    bottom: 0;
-    margin-bottom: 4vh;
-    width: 50%;
+.new-msg button:hover {
+    background-color: #70f4e9;
+    scale: 1.1;
+}
+
+.new-msg button:active {
+    background-color: #5275ba;
+    scale: 1;
+}
+
+
+
+@keyframes intro-down {
+    0% {
+        transform: translate(0, 100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
 }

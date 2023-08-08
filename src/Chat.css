@@ -3,19 +3,18 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    min-height: 65vh;
     width: 100%;
-    margin-top: 20vh;
-    margin-bottom: 15vh;
+    margin-top: 15vh;
     border-radius: 5px;
-
     overflow: hidden;
 }
 
 .chat {
-    background-color: #ffffff44;
-    width: 80vw;
-    height: 70vh;
+    background-color: #ffffff09;
+    min-width: 80vw;
+    min-height: 70vh;
+    padding-bottom: 10px;
     border-radius: 20px;
     display: flex;
     flex-direction: column-reverse;
@@ -39,9 +38,8 @@
     padding: 1vh 2vw;
     margin: 1vh 2vw;
     border-radius: 10px;
-    background-color: #151515;
+    background-color: #00000066;
     color: aliceblue;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     max-width: 60%;
     width: max-content;
     word-wrap: break-word;
@@ -54,6 +52,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    transform: translate(0, 0.7vh);
     margin: 3px 20px;
 }
 
@@ -64,9 +63,39 @@
 
 .received {
     align-self: flex-start;
+    flex-direction: row;
+    border-radius: 20px 20px 20px 0;
 }
 
 .sent {
     align-self: flex-end;
     flex-direction: row-reverse;
+    border-radius: 20px 20px 0 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .chat-container {
+        margin-top: 10vh;
+    }
+
+    .chat {
+        width: 90vw;
+        height: 80vh;
+    }
+
+    .message {
+        max-width: 80%;
+    }
+
+    .message img {
+        width: 20px;
+        height: 20px;
+        transform: translate(0, 1vh);
+    }
+
+    .message {
+
+        margin: 1vh 1vw;
+        font-size: 16px;
+    }
 }

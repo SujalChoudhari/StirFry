@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 99vh;
+    height: 70vh;
 }
 
 .sign-in-message {
@@ -13,7 +13,7 @@
 }
 
 .sign-in-button {
-    background-color: #52a0ba;
+    background-color: #66666644;
     color: #fff;
     padding: 2vh 4vw;
     border-radius: 20px;
@@ -21,6 +21,7 @@
     font-size: 5vh;
     cursor: pointer;
     transition: 0.2s ease;
+    box-shadow: 0 0 30px #fff7;
     
 }
 
@@ -31,7 +32,7 @@
 
 
 .sign-out {
-    background-color: #f96a6a;
+    background-color: #00000044;
     color: #fff;
     padding: 1vh 2vw;
     border-radius: 20px;
@@ -40,4 +41,60 @@
     cursor: pointer;
     transition: 0.2s ease;
     
+}
+
+.sign-out:hover {
+    background-color: #f96a6a;
+    scale: 1.1;
+}
+
+.g-logo {
+    height: 3vh;
+    transform: translate(0, 1vh);
+    margin-right: 3px;
+    background-color: rgb(255, 255, 255);
+    padding: 1vh;
+    border-radius: 50%;
+}
+
+.fineprint{
+    font-size: 8px;
+    color: #aaa;
+    margin-top: 1rem;
+    position: fixed;
+    text-align: justify;
+    bottom: 0;
+    margin-bottom: 4vh;
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .sign-in-message {
+        font-size: 1.5vh;
+    }
+
+    .sign-in-button {
+        font-size: 2vh;
+    }
+
+    .g-logo {
+        height: 2vh;
+        margin-right: 3px;
+        background-color: rgb(255, 255, 255);
+        padding: 0.5vh;
+        border-radius: 50%;
+    }
+
+    .fineprint{
+        font-size: 5px;
+        width: 90%;
+    }
+
+    .sign-out{
+        font-size: 1.5vh;
+        padding: 5px;
+        border-radius: 5px;
+    }
 }
