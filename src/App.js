@@ -71,17 +71,21 @@ function ChatMessage({ message }) {
 function ChatRoom() {
 
   const msgRef = collection(firestore, 'messages');
-  const q = query(msgRef, orderBy('createdAt',), limit(25));
+  const q = query(msgRef, orderBy('createdAt','desc'), limit(15));
 
   const [messages, loading] = useCollectionData(q, { initialValue: [] });
+  var audio  = new Audio("./dropped.wav");
+      // audio.play();
+
   const [formValue, setFormValue] = useState('');
+
+  const focusDiv = React.useRef( );
 
   const sendMessage = async (e) => {
     e.preventDefault();
 
     if (formValue === '') return alert('Please enter a message!')
     if (formValue.length > 1000) return alert('Message too long!')
-
 
     addDoc(msgRef, {
       text: formValue,
@@ -96,6 +100,9 @@ function ChatRoom() {
   if (loading) {
     return <p>Loading...</p>;
   }
+  else{
+      
+  }
 
   return (
     <div className='chat-container'>
@@ -105,6 +112,7 @@ function ChatRoom() {
             <ChatMessage key={msg.id} message={msg} />
           ))}
       </div>
+      <div ref={focusDiv}></div>
 
       <div className='new-msg'>
         <form onSubmit={sendMessage}>
