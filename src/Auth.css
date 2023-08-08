@@ -1,0 +1,43 @@
+.sign-in-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 99vh;
+}
+
+.sign-in-message {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #aaa;
+}
+
+.sign-in-button {
+    background-color: #52a0ba;
+    color: #fff;
+    padding: 2vh 4vw;
+    border-radius: 20px;
+    border: none;
+    font-size: 5vh;
+    cursor: pointer;
+    transition: 0.2s ease;
+    
+}
+
+.sign-in-button:hover {
+    background-color: #70f4e9;
+    scale: 1.1;
+}
+
+
+.sign-out {
+    background-color: #f96a6a;
+    color: #fff;
+    padding: 1vh 2vw;
+    border-radius: 20px;
+    border: none;
+    font-size: max(1vw,20px);
+    cursor: pointer;
+    transition: 0.2s ease;
+    
+}

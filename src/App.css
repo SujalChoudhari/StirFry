@@ -1,0 +1,65 @@
+body {
+    background-color: #0c2c15;
+}
+
+.g-logo {
+    height: 3vh;
+    transform: translate(0, 1vh);
+    margin-right: 3px;
+    background-color: rgb(255, 255, 255);
+    padding: 1vh;
+    border-radius: 50%;
+}
+
+.new-msg {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin-bottom: 3vh;
+}
+
+.new-msg input {
+    width: 80vw;
+    max-width: 600px;
+    height: 4vw;
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 2vw;
+    font-size: 2vh;
+    outline: none;
+    background-color: #c4f8ff;
+}
+
+.new-msg button {
+    width: 5vw;
+    height: 5vw;
+    min-width: 40px;
+    min-height: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #52a0ba;
+    color: #ffffff;
+    font-size: max(1.5vw,20px);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.fineprint{
+    font-size: 8px;
+    color: #aaa;
+    margin-top: 1rem;
+    position: fixed;
+    text-align: justify;
+    bottom: 0;
+    margin-bottom: 4vh;
+    width: 50%;
+}

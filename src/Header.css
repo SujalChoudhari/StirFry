@@ -1,0 +1,25 @@
+.header {
+    background-color: #306070;
+    color: #fff;
+    padding: 0 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vw;
+    border-radius: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header p {
+    color: #f96a6a;
+    font-size: small;
+}
+
+.header h1 {
+    filter: drop-shadow(0 0 0.75rem #ddd);
+    user-select: none;
+    font-size: min(5vw, 30px);
+}
