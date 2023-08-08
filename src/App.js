@@ -71,7 +71,7 @@ function ChatMessage({ message }) {
 function ChatRoom() {
 
   const msgRef = collection(firestore, 'messages');
-  const q = query(msgRef, orderBy('createdAt','desc'), limit(15));
+  const q = query(msgRef, orderBy('createdAt','desc'), limit(30));
 
   const [messages, loading] = useCollectionData(q, { initialValue: [] });
 
