@@ -65,7 +65,28 @@ body {
     scale: 1;
 }
 
+.loading{
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000099;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: intro-down 0.5s ease 1;
+}
 
+.loading p {
+    font-size: 3vh;
+    color: #ffffff;
+    font-family: monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 10vh;
+}
 
 @keyframes intro-down {
     0% {

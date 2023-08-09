@@ -13,12 +13,14 @@
 .chat {
     background-color: #ffffff09;
     min-width: 80vw;
-    min-height: 70vh;
+    height: 70vh;
     padding-bottom: 10px;
     border-radius: 20px;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
+    
+    box-shadow: inset 0px 0px 50px #035a7a99;
     overflow-y: auto;
 }
 
@@ -48,6 +50,7 @@
     flex-direction: row;
 }
 
+
 .message img {
     width: 40px;
     height: 40px;
@@ -67,10 +70,23 @@
     border-radius: 20px 20px 20px 0;
 }
 
+.received:hover {
+    background-color: #07144399;
+}
+
 .sent {
     align-self: flex-end;
     flex-direction: row-reverse;
     border-radius: 20px 20px 0 20px;
+}
+
+.sent:hover {
+    background-color: #07432099;
+}
+
+.time-ago {
+    font-size: 1.5vh;
+    color: #ffffff99;
 }
 
 @media only screen and (max-width: 768px) {

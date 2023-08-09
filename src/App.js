@@ -10,6 +10,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Header from './Header';
 
+import { formatDistanceToNow } from 'date-fns';
+
 const app = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -31,7 +33,7 @@ function SignIn() {
 
   return (
     <div className='sign-in-page'>
-      <button className="sign-in-button" onClick={signInWithGoogle}>Sign In <img  className='g-logo' src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google logo" /></button>
+      <button className="sign-in-button" onClick={signInWithGoogle}>Sign In <img className='g-logo' src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google logo" /></button>
       <p className='sign-in-message'>Looks like you're not signed in. Sign in to chat!</p>
       <p className='fineprint'> <b>Note:</b>  This chat app is intended for use by individuals who are 18 years of age or older. By using this app, you confirm that you are at least 18 years old.
 
@@ -56,14 +58,17 @@ function SignOut() {
 }
 
 function ChatMessage({ message }) {
-  const { text, uid, photoURl } = message;
+  const { text, uid, photoURl, createdAt } = message;
 
   const msgClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (
     <div key={uid} className={`message ${msgClass}`}>
-      <img referrerpolicy="no-referrer" src={photoURl} alt="profile pic" />
-      <p>{text}</p>
+      <img referrerPolicy="no-referrer" src={photoURl} alt="profile pic" />
+      <div>
+        <p>{text}</p>
+        <p className='time-ago'>{formatDistanceToNow(createdAt.toDate())} ago</p>
+      </div>
     </div>
   );
 }
@@ -71,13 +76,13 @@ function ChatMessage({ message }) {
 function ChatRoom() {
 
   const msgRef = collection(firestore, 'messages');
-  const q = query(msgRef, orderBy('createdAt','desc'), limit(30));
+  const q = query(msgRef, orderBy('createdAt', 'desc'), limit(30));
 
   const [messages, loading] = useCollectionData(q, { initialValue: [] });
 
   const [formValue, setFormValue] = useState('');
 
-  const focusDiv = React.useRef( );
+  const focusDiv = React.useRef();
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -96,10 +101,12 @@ function ChatRoom() {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <div className='loading'>
+      <p>Loading...</p>
+    </div>;
   }
-  else{
-      
+  else {
+
   }
 
   return (
