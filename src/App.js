@@ -71,11 +71,10 @@ function ChatMessage({ message }) {
     <div key={uid} className={`message ${msgClass}`}>
       <div>
         <img referrerPolicy="no-referrer" src={photoURl} alt="profile pic" />
+        <h5>{nick || "Guest"}</h5>
+        <p className='time-ago'>{getTimeValue()} ago</p>
       </div>
-      <div>
-        <p>{text}</p>
-        <p className='time-ago'>{getTimeValue()} ago | {nick || "Guest"}</p>
-      </div>
+      <p>{text}</p>
     </div>
   );
 }
@@ -139,8 +138,10 @@ function ChatRoom() {
       <div className='new-msg'>
         <form onSubmit={sendMessage}>
           <input className='nickname' placeholder='Guest' value={nickName} onChange={nicknameHandler} />
-          <input className='message-input' placeholder='My passwords are ...' value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
-          <button type="submit">🍳</button>
+          <span>
+            <input className='message-input' placeholder='My passwords are ...' value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
+            <button type="submit">🍳</button>
+          </span>
         </form>
       </div>
     </div>
