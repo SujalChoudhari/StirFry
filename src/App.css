@@ -5,8 +5,6 @@ body {
     background-size: cover;
 }
 
-
-
 .new-msg {
     width: 100vw;
     display: flex;
@@ -21,7 +19,8 @@ body {
     animation: intro-down 0.5s ease 1;
 }
 
-.new-msg input {
+.message-input {
+    margin: 0 2vw;
     width: 80vw;
     max-width: 600px;
     height: 4vw;
@@ -36,8 +35,24 @@ body {
     font-family: monospace;
 }
 
-.new-msg input::placeholder {
+.new-msg .message-input::placeholder {
     color: #52a0ba;
+}
+
+.nickname {
+    margin: 0 2vw;
+    width: 7vw;
+    max-width: 250px;
+    height: 4vw;
+    min-height: 40px;
+    min-width: 100px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 2vw;
+    font-size: 2vh;
+    outline: none;
+    background-color: #c4f8ff;
+    font-family: monospace;
 }
 
 .new-msg button {
@@ -50,7 +65,7 @@ body {
     border: none;
     background-color: #52a0ba;
     color: #ffffff;
-    font-size: max(1.5vw,20px);
+    font-size: max(1.5vw, 20px);
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -65,7 +80,7 @@ body {
     scale: 1;
 }
 
-.loading{
+.loading {
     width: 100vw;
     height: 100vh;
     background-color: #00000099;
@@ -98,4 +113,17 @@ body {
         transform: translate(0, 0);
         opacity: 1;
     }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .message-input {
+        border-radius: 10px;
+    }
+
+    .nickname {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
 }

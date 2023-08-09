@@ -58,16 +58,23 @@ function SignOut() {
 }
 
 function ChatMessage({ message }) {
-  const { text, uid, photoURl, createdAt } = message;
+  const { uid, text, createdAt, nick, photoURl } = message;
 
   const msgClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
+  const getTimeValue = () => {
+    try { return formatDistanceToNow(createdAt?.toDate()); }
+    catch (error) { return 'a few seconds' }
+  }
+
   return (
     <div key={uid} className={`message ${msgClass}`}>
-      <img referrerPolicy="no-referrer" src={photoURl} alt="profile pic" />
+      <div>
+        <img referrerPolicy="no-referrer" src={photoURl} alt="profile pic" />
+      </div>
       <div>
         <p>{text}</p>
-        <p className='time-ago'>{formatDistanceToNow(createdAt.toDate())} ago</p>
+        <p className='time-ago'>{getTimeValue()} ago | {nick || "Guest"}</p>
       </div>
     </div>
   );
@@ -81,6 +88,12 @@ function ChatRoom() {
   const [messages, loading] = useCollectionData(q, { initialValue: [] });
 
   const [formValue, setFormValue] = useState('');
+  const [nickName, setNickname] = useState(localStorage.getItem('nickname') || 'Guest');
+
+  const nicknameHandler = (e) => {
+    setNickname(e.target.value);
+    localStorage.setItem('nickname', e.target.value);
+  }
 
   const focusDiv = React.useRef();
 
@@ -91,13 +104,17 @@ function ChatRoom() {
     if (formValue.length > 1000) return alert('Message too long!')
 
     addDoc(msgRef, {
+      uid: auth.currentUser.uid,
       text: formValue,
       createdAt: serverTimestamp(),
-      uid: auth.currentUser.uid,
+      nick: nickName,
       photoURl: auth.currentUser.photoURL
     })
 
     setFormValue('');
+
+
+    focusDiv.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   if (loading) {
@@ -121,7 +138,8 @@ function ChatRoom() {
 
       <div className='new-msg'>
         <form onSubmit={sendMessage}>
-          <input placeholder='My passwords are ...' value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
+          <input className='nickname' placeholder='Guest' value={nickName} onChange={nicknameHandler} />
+          <input className='message-input' placeholder='My passwords are ...' value={formValue} onChange={(e) => { setFormValue(e.target.value) }} />
           <button type="submit">🍳</button>
         </form>
       </div>
